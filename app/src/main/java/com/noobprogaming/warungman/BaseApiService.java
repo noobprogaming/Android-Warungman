@@ -1,5 +1,6 @@
 package com.noobprogaming.warungman;
 
+<<<<<<< HEAD
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -14,4 +15,5 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("register")
     Call<ResponseBody> RegisterRequest (@Field("nama") String nama, @Field("email") String email, @Field("password") String password);
+
 }
