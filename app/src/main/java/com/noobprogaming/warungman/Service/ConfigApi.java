@@ -1,4 +1,4 @@
-package com.noobprogaming.warungman;
+package com.noobprogaming.warungman.Service;
 
 public class ConfigApi {
 

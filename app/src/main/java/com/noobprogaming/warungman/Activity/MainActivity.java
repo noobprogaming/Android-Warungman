@@ -1,8 +1,10 @@
-package com.noobprogaming.warungman;
+package com.noobprogaming.warungman.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.noobprogaming.warungman.R;
 
 public class MainActivity extends AppCompatActivity {
 

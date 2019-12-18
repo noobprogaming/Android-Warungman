@@ -1,4 +1,4 @@
-package com.noobprogaming.warungman;
+package com.noobprogaming.warungman.Service;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
