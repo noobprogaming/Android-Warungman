@@ -106,7 +106,7 @@ public class QrScanActivity extends AppCompatActivity {
             });
 
             builder.setNegativeButton(
-                    "CANCEL", dialog.id(); 
+                    "CANCEL", dialog.id();
             )
 
         }
