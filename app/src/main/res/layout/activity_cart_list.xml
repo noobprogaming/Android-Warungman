@@ -6,92 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/sm"
-        android:background="@color/xlightGrey"
-        android:orientation="vertical"
-        android:weightSum="2">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="@dimen/sm"-->
+<!--        android:background="@color/xlightGrey"-->
+<!--        android:orientation="vertical"-->
+<!--        android:weightSum="2">-->
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fillViewport="true">
+<!--        <ScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:fillViewport="true">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:padding="@dimen/sm">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@color/white"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="@dimen/sm">-->
 
-                <ListView
-                    android:id="@+id/lvCartItem"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></ListView>
+<!--                <ListView-->
+<!--                    android:id="@+id/lvCartItem"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"></ListView>-->
 
-                <!--                <LinearLayout-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:background="@color/white"-->
-                <!--                    android:orientation="vertical"-->
-                <!--                    android:padding="@dimen/sm">-->
+<!--                &lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--                &lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--                &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                &lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+<!--                &lt;!&ndash;                    android:orientation="vertical"&ndash;&gt;-->
+<!--                &lt;!&ndash;                    android:padding="@dimen/sm">&ndash;&gt;-->
 
-                <!--                    <ListView-->
-                <!--                        android:id="@+id/lvItem"-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"></ListView>-->
+<!--                &lt;!&ndash;                    <ListView&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:id="@+id/lvItem"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:layout_width="match_parent"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:layout_height="wrap_content"></ListView>&ndash;&gt;-->
 
-                <!--                </LinearLayout>-->
+<!--                &lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-        </ScrollView>
+<!--        </ScrollView>-->
 
-        <!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
-        <!--            android:id="@+id/bnvMain"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            app:menu="@menu/main_menu">-->
-        <!--        </com.google.android.material.bottomnavigation.BottomNavigationView>-->
+<!--        &lt;!&ndash;        <com.google.android.material.bottomnavigation.BottomNavigationView&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:id="@+id/bnvMain"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;            app:menu="@menu/main_menu">&ndash;&gt;-->
+<!--        &lt;!&ndash;        </com.google.android.material.bottomnavigation.BottomNavigationView>&ndash;&gt;-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
 
-                <EditText
-                    android:id="@+id/etNote"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Catatan" />
+<!--                <EditText-->
+<!--                    android:id="@+id/etNote"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="Catatan" />-->
 
-            </com.google.android.material.textfield.TextInputLayout>
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"></Spinner>
+<!--            <Spinner-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"></Spinner>-->
 
-            <TextView
-                android:id="@+id/tvTotalPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvTotalPrice"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content" />-->
 
-            <Button
-                android:id="@+id/btnOrder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ORDER" />
+<!--            <Button-->
+<!--                android:id="@+id/btnOrder"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="ORDER" />-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
