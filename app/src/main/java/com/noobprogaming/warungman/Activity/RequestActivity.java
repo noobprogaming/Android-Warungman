@@ -31,8 +31,9 @@ public class RequestActivity extends AppCompatActivity {
     Button btnRequest;
     EditText etRequestAmount;
     TextView tvRequestAmount;
+    ImageView ivQrCode;
     CardView cvQrHolder;
-8 m
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
