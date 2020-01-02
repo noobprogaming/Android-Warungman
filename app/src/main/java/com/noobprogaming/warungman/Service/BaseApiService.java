@@ -37,11 +37,27 @@ public interface BaseApiService {
                                            @Field("total_price") String total_price);
 
     @FormUrlEncoded
+    @POST("storeTransfer")
+    Call<ResponseBody> storeTransferRequest(@Header("Authorization") String token,
+                                            @Field("receiver_id") String receiver_id,
+                                            @Field("transfer_amount") String transfer_amount,
+                                            @Field("password") String password);
+
+    @FormUrlEncoded
     @POST("storeCart")
     Call<ResponseBody> storeCartRequest(@Header("Authorization") String token,
                                         @Field("seller_id") String seller_id,
                                         @Field("item_id") String item_id,
                                         @Field("amount") String amount);
+
+    @GET("detailAccount")
+    Call<ResponseBody> detailAccountRequest(@Header("Authorization") String token);
+
+    @GET("checkAccount")
+    Call<ResponseBody> checkAccountRequest(@Header("Authorization") String token,
+                                           @Query("user_id") String user_id);
+
+
 
     @GET("itemDetail/{item_id}")
     Call<ResponseBody> itemDetailRequest(@Header("Authorization") String token,

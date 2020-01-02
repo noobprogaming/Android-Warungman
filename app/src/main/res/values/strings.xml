@@ -2,8 +2,17 @@
     <string name="app_name">WarungMan</string>
     <string name="exitConfirm">Tekan sekali lagi untuk keluar</string>
     <string name="incorrectData">Username atau password salah</string>
+    <string name="usernameNotFound">Username tidak terdaftar</string>
     <string name="badConnection">Koneksi bermasalah</string>
     <string name="error">Terjadi kesalahan</string>
     <string name="loading">Memuat data</string>
     <string name="logoutNotification">Anda telah logout</string>
+    <string name="confirm_1">Belum Bayar</string>
+    <string name="confirm_2">Proses</string>
+    <string name="confirm_3">Selesai</string>
+    <string name="confirm_4">Dibatalkan oleh pembeli</string>
+    <string name="confirm_4a">Anda telah membatalkan pesanan ini</string>
+    <string name="confirm_5">Dibatalkan oleh resto</string>
+    <string name="confirm_5a">Pesanan ini dibatalkan oleh resto</string>
+    <string name="qrRequest">Minta teman kamu untuk scan QR code di bawah ini</string>
 </resources>
