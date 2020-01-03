@@ -31,8 +31,8 @@ public class RequestActivity extends AppCompatActivity {
     Button btnRequest;
     EditText etRequestAmount;
     TextView tvRequestAmount;
-    ImageView ivQrCode;
     CardView cvQrHolder;
+    ImageView ivQrCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,26 +77,26 @@ public class RequestActivity extends AppCompatActivity {
     private void typingDelay() {
 
         etRequestAmount.addTextChangedListener(new TextWatcher() {
-                                                   @Override
-                                                   public void beforeTextChanged(CharSequence s, int start, int count,
-                                                                                 int after) {
-                                                   }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
 
-                                                   @Override
-                                                   public void onTextChanged(final CharSequence s, int start, int before,
-                                                                             int count) {
+            @Override
+            public void onTextChanged(final CharSequence s, int start, int before,
+                                      int count) {
 
-                                                   }
+            }
 
-                                                   @Override
-                                                   public void afterTextChanged(final Editable s) {
-                                                       if (s.length() > 0) {
-                                                           btnRequest.setEnabled(true);
-                                                       } else {
-                                                           btnRequest.setEnabled(false);
-                                                       }
-                                                   }
-                                               }
+            @Override
+            public void afterTextChanged(final Editable s) {
+                if (s.length() > 0) {
+                    btnRequest.setEnabled(true);
+                } else {
+                    btnRequest.setEnabled(false);
+                }
+            }
+        }
 
         );
 

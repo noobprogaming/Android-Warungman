@@ -19,65 +19,71 @@
             android:paddingLeft="@dimen/md"
             android:paddingRight="@dimen/md">
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/xl"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="{{ Hi }}"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="{{ Rp0 }}"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:background="@color/green"
-                android:orientation="horizontal"
-                android:padding="@dimen/sm">
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="@dimen/sm">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="left"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Pay"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tvBalance"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="{{ Rp0 }}"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/sm"
+                        android:layout_marginBottom="@dimen/sm"
                         android:orientation="horizontal"
                         android:weightSum="4">
 
                         <LinearLayout
+                            android:id="@+id/llBayar"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -87,17 +93,19 @@
                             <ImageView
                                 android:layout_width="@dimen/img_pp"
                                 android:layout_height="wrap_content"
-                                android:src="@mipmap/ic_launcher_round" />
+                                android:src="@drawable/ic_payment" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Pay"
+                                android:layout_marginTop="@dimen/xs"
+                                android:text="Bayar"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/llTransfer"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -107,17 +115,19 @@
                             <ImageView
                                 android:layout_width="@dimen/img_pp"
                                 android:layout_height="wrap_content"
-                                android:src="@mipmap/ic_launcher_round" />
+                                android:src="@drawable/ic_credit_card" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Pay"
+                                android:layout_marginTop="@dimen/xs"
+                                android:text="Transfer"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/llTopUp"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -127,17 +137,19 @@
                             <ImageView
                                 android:layout_width="@dimen/img_pp"
                                 android:layout_height="wrap_content"
-                                android:src="@mipmap/ic_launcher_round" />
+                                android:src="@drawable/ic_topup" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Pay"
+                                android:layout_marginTop="@dimen/xs"
+                                android:text="Top-up"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/llRequest"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -147,12 +159,13 @@
                             <ImageView
                                 android:layout_width="@dimen/img_pp"
                                 android:layout_height="wrap_content"
-                                android:src="@mipmap/ic_launcher_round" />
+                                android:src="@drawable/ic_payment_request" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Pay"
+                                android:layout_marginTop="@dimen/xs"
+                                android:text="Request"
                                 android:textStyle="bold" />
 
                         </LinearLayout>

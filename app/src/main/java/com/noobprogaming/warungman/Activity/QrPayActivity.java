@@ -28,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class QrScanActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
+public class QrPayActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
     String token, qr_code, purchase_id, note, total_price;
     Context mContext;
@@ -47,7 +47,7 @@ public class QrScanActivity extends AppCompatActivity implements ZXingScannerVie
         note = getIntent().getStringExtra(ConfigApi.TAG_NOTE);
         total_price = getIntent().getStringExtra(ConfigApi.TAG_TOTAL_PRICE);
 
-        mContext = QrScanActivity.this;
+        mContext = QrPayActivity.this;
         mApiService = ConfigApi.getAPIService();
 
         checkCameraPermission();
@@ -113,7 +113,7 @@ public class QrScanActivity extends AppCompatActivity implements ZXingScannerVie
                                 } else {
                                     String status = (String) jsonSuccess.get(ConfigApi.TAG_ERROR);
                                     Toast.makeText(mContext, status, Toast.LENGTH_SHORT).show();
-                                    mScannerView.resumeCameraPreview(QrScanActivity.this);
+                                    mScannerView.resumeCameraPreview(QrPayActivity.this);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

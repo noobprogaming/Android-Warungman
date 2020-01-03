@@ -1,4 +1,4 @@
-package com.noobprogaming.warungman.Service;
+package com.noobprogaming.warungman;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,8 +8,8 @@ import android.os.Handler;
 import android.widget.Toast;
 
 import com.noobprogaming.warungman.Activity.MainActivity;
-import com.noobprogaming.warungman.LoginActivity;
-import com.noobprogaming.warungman.R;
+import com.noobprogaming.warungman.Service.BaseApiService;
+import com.noobprogaming.warungman.Service.ConfigApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,12 +24,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class WelcomeActivity extends AppCompatActivity {
+
     String token, email, password;
 
     Context mContext;
     BaseApiService mApiService;
+
     @Override
-    protected void onCreate (Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
@@ -37,8 +39,9 @@ public class WelcomeActivity extends AppCompatActivity {
         mApiService = ConfigApi.getAPIService();
 
         getLoginData();
-        if (email == null && password == null){
-            new Handler(). postDelayed(new Runnable() {
+
+        if (email == null && password == null) {
+            new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     Intent i = new Intent(mContext, LoginActivity.class);
@@ -46,10 +49,12 @@ public class WelcomeActivity extends AppCompatActivity {
                     finish();
                 }
             }, 2000);
-        }else {
+        } else {
             requestLogin();
         }
+
     }
+
     private void requestLogin() {
         mApiService.loginRequest(email, password)
                 .enqueue(new Callback<ResponseBody>() {

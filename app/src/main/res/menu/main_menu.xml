@@ -2,27 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menuHome"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Home" />
+        android:icon="@drawable/ic_account_restaurant"
+        android:title="Resto" />
 
     <item
         android:id="@+id/menuWallet"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Wallet" />
+        android:icon="@drawable/ic_account_balance_wallet"
+        android:title="Dompet" />
 
     <item
         android:id="@+id/menuCenter"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_account_code"
         android:title="Scan QR" />
 
     <item
         android:id="@+id/menuTransaction"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Transaction" />
+        android:icon="@drawable/ic_account_sync"
+        android:title="Transaksi" />
 
     <item
         android:id="@+id/menuAccount"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Account" />
+        android:icon="@drawable/ic_account_circle"
+        android:title="Akun" />
 
 </menu>

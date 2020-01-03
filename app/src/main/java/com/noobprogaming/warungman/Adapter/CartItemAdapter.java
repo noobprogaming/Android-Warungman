@@ -12,9 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.noobprogaming.warungman.Activity.ItemDetailActivity;
 import com.noobprogaming.warungman.Model.CartItemModel;
@@ -22,12 +19,15 @@ import com.noobprogaming.warungman.R;
 import com.noobprogaming.warungman.Service.BaseApiService;
 import com.noobprogaming.warungman.Service.ConfigApi;
 
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -120,8 +120,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
         holder.btnIncrease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sp = v.getContext().getSharedPreferences(ConfigApi.TAG_TOKEN, Context.MODE_PRIVATE);
-                String token = sp.getString(ConfigApi.TAG_TOKEN, null);
+               SharedPreferences sp = v.getContext().getSharedPreferences(ConfigApi.TAG_TOKEN, Context.MODE_PRIVATE);
+               String token = sp.getString(ConfigApi.TAG_TOKEN, null);
 
                 String amountText = finalholder.tvAmount.getText().toString();
                 int mAmount = Integer.parseInt(amountText);
@@ -149,8 +149,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
         holder.btnDecrease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sp = v.getContext().getSharedPreferences(ConfigApi.TAG_TOKEN, Context.MODE_PRIVATE);
-                String token = sp.getString(ConfigApi.TAG_TOKEN, null);
+               SharedPreferences sp = v.getContext().getSharedPreferences(ConfigApi.TAG_TOKEN, Context.MODE_PRIVATE);
+               String token = sp.getString(ConfigApi.TAG_TOKEN, null);
 
                 String amountText = finalholder.tvAmount.getText().toString();
                 int mAmount = Integer.parseInt(amountText);

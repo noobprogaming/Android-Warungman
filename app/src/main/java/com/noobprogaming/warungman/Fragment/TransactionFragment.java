@@ -1,16 +1,9 @@
 package com.noobprogaming.warungman.Fragment;
 
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,14 +26,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class TransactionFragment extends Fragment {
 
     ProgressDialog progressDialog;
@@ -50,8 +44,8 @@ public class TransactionFragment extends Fragment {
     BaseApiService mApiService;
     SwipeRefreshLayout sdRefresh;
     ListView lvTransaction;
+
     public TransactionFragment() {
-        // Required empty public constructor
     }
 
 
@@ -88,7 +82,8 @@ public class TransactionFragment extends Fragment {
 
         loading();
         transactionListRequest();
-        return inflater.inflate(R.layout.fragment_transaction, container, false);
+
+        return view;
     }
 
     @Override
@@ -161,7 +156,6 @@ public class TransactionFragment extends Fragment {
                     }
                 });
     }
-
 
     private void loading() {
         progressDialog = new ProgressDialog(mContext);

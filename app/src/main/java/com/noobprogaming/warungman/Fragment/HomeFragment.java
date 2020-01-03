@@ -1,9 +1,27 @@
 package com.noobprogaming.warungman.Fragment;
 
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.noobprogaming.warungman.Adapter.ItemAdapter;
+import com.noobprogaming.warungman.Model.ItemModel;
+import com.noobprogaming.warungman.R;
+import com.noobprogaming.warungman.Service.BaseApiService;
+import com.noobprogaming.warungman.Service.ConfigApi;
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,42 +34,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.noobprogaming.warungman.Adapter.ItemAdapter;
-import com.noobprogaming.warungman.Model.CartItemModel;
-import com.noobprogaming.warungman.Model.ItemModel;
-import com.noobprogaming.warungman.R;
-import com.noobprogaming.warungman.Service.BaseApiService;
-import com.noobprogaming.warungman.Service.ConfigApi;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-
 
 public class HomeFragment extends Fragment {
 
     ProgressDialog progressDialog;
     String token;
     View view;
+    SwipeRefreshLayout sdRefresh;
     Context mContext;
     BaseApiService mApiService;
-
 
     private RecyclerView rvItem;
     private ItemAdapter adapter;
     private ArrayList<ItemModel> itemArrayList;
+
     public HomeFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -63,24 +60,16 @@ public class HomeFragment extends Fragment {
 
         mContext = getActivity();
         mApiService = ConfigApi.getAPIService();
-
         rvItem = (RecyclerView) view.findViewById(R.id.rvItem);
-        adapter = new ItemAdapter(itemArrayList);
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext);
         rvItem.setLayoutManager(layoutManager);
-        rvItem.setAdapter(adapter);
 
-        final SwipeRefreshLayout sdRefresh = (SwipeRefreshLayout) view.findViewById(R.id.sdRefresh);
-        sdRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        FloatingActionButton fabEdit = (FloatingActionButton) view.findViewById(R.id.fabEdit);
+        fabEdit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onRefresh() {
-                itemListRequest();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        sdRefresh.setRefreshing(false);
-                    }
-                }, 2000);
+            public void onClick(View view) {
+                Toast.makeText(mContext, "Click!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -88,7 +77,6 @@ public class HomeFragment extends Fragment {
         itemListRequest();
 
         return view;
-
     }
 
     @Override
@@ -111,12 +99,18 @@ public class HomeFragment extends Fragment {
                                     JSONArray jsonData = jsonResult.getJSONArray(ConfigApi.JSON_ITEM);
                                     for (int i = 0; i < jsonData.length(); i++) {
                                         JSONObject jData = jsonData.getJSONObject(i);
-                                        String item_id = jData.getString(ConfigApi.TAG_ITEM_ID);
-                                        String name = jData.getString(ConfigApi.TAG_NAME);
-                                        String selling_price = jData.getString(ConfigApi.TAG_SELLING_PRICE);
+                                            String item_id = jData.getString(ConfigApi.TAG_ITEM_ID);
+                                            String name = jData.getString(ConfigApi.TAG_NAME);
+                                            String stock = jData.getString(ConfigApi.TAG_STOCK);
+                                            String selling_price = jData.getString(ConfigApi.TAG_SELLING_PRICE);
+                                            String seller_id = jData.getString(ConfigApi.TAG_SELLER_ID);
 
-                                        itemArrayList.add(new ItemModel(item_id, name, selling_price));
+                                            itemArrayList.add(new ItemModel(item_id, name, stock, selling_price, seller_id));
                                     }
+
+                                    adapter = new ItemAdapter(itemArrayList);
+                                    rvItem.setAdapter(adapter);
+
                                 } else if (jsonResult.has(ConfigApi.JSON_ERROR)) {
                                     Toast.makeText(mContext, getString(R.string.error), Toast.LENGTH_SHORT).show();
                                 }
@@ -132,14 +126,14 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         progressDialog.dismiss();
-                        Toast.makeText(mContext, "Koneksi bermasalah", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, getString(R.string.badConnection), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     private void loading() {
         progressDialog = new ProgressDialog(mContext);
-        progressDialog.setMessage("Memuat data");
+        progressDialog.setMessage(getString(R.string.loading));
         progressDialog.show();
     }
 
