@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.noobprogaming.warungman">
 
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
@@ -12,14 +13,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity
+            android:name=".WelcomeActivity"
+            android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.MainActivity">
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".Activity.MainActivity"></activity>
+        <activity android:name=".Activity.TransferActivity"></activity>
+        <activity android:name=".Activity.TopupActivity"></activity>
+        <activity android:name=".Activity.RequestActivity"></activity>
+        <activity android:name=".Activity.CartListActivity"></activity>
+        <activity
+            android:name=".Activity.ItemDetailActivity"
+            android:theme="@style/AppThemeNoActionBar"></activity>
+        <activity
+            android:name=".Activity.QrScanActivity"
+            android:theme="@style/AppThemeNoActionBar"></activity>
+        <activity
+            android:name=".Activity.QrPayActivity"
+            android:theme="@style/AppThemeNoActionBar"></activity>
     </application>
 
 </manifest>
