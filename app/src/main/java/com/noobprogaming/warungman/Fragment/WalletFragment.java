@@ -68,7 +68,7 @@ public class WalletFragment extends Fragment {
         tvName = (TextView) view.findViewById(R.id.tvName);
         tvBalance = (TextView) view.findViewById(R.id.tvBalance);
 
-        tvName.setText("Hi, " + name);
+        tvName.setText("Hai, " + name);
         tvBalance.setText("Rp" + balance);
 
         sdRefresh = (SwipeRefreshLayout) view.findViewById(R.id.sdRefresh);
@@ -151,7 +151,7 @@ public class WalletFragment extends Fragment {
 //                                    String created_at = jData.getString(ConfigApi.TAG_CREATED_AT);
 
 //                                    user_id.setText(jData.getString(ConfigApi.TAG_USER_ID));
-                                    tvName.setText("Hi, " + name);
+                                    tvName.setText("Hai, " + name);
 //                                    email.setText(jData.getString(ConfigApi.TAG_EMAIL));
 //                                    phone_number.setText(jData.getString(ConfigApi.TAG_PHONE_NUMBER));
                                     tvBalance.setText("Rp" + balance);

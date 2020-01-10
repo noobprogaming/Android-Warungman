@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +39,9 @@ public class CartListActivity extends AppCompatActivity {
     String token, confirm_id, purchase_id, note, total_price;
     Context mContext;
     BaseApiService mApiService;
+    Spinner spinnerPos;
     Button btnOrder;
-    TextView tvTotalPrice;
+    TextView tvPurchase_id, tvSeller, tvTotalPrice;
     EditText etNote;
 //    ListView lvCartItem;
 
@@ -62,7 +65,11 @@ public class CartListActivity extends AppCompatActivity {
         rvItem = (RecyclerView) findViewById(R.id.rvItem);
 
         etNote = (EditText) findViewById(R.id.etNote);
+        tvPurchase_id = (TextView) findViewById(R.id.tvPurchase_id);
+        tvSeller = (TextView) findViewById(R.id.tvSeller);
         tvTotalPrice = (TextView) findViewById(R.id.tvTotalPrice);
+
+        spinnerPos = (Spinner) findViewById(R.id.spinnerPos);
 
         btnOrder = (Button) findViewById(R.id.btnOrder);
         btnOrder.setEnabled(false);
@@ -101,38 +108,47 @@ public class CartListActivity extends AppCompatActivity {
 //                            pdLoading.dismiss();
                             try {
                                 itemArrayList = new ArrayList<>();
+                                ArrayList<String> spinnerArray = new ArrayList<String>();
                                 JSONObject jsonResult = new JSONObject(response.body().string());
                                 if (jsonResult.has(ConfigApi.JSON_CONFIRM)) {
                                     JSONArray jsonConfirm = jsonResult.getJSONArray(ConfigApi.JSON_CONFIRM);
                                     JSONObject jConfirm = jsonConfirm.getJSONObject(0);
                                     confirm_id = jConfirm.getString(ConfigApi.TAG_CONFIRM_ID);
+                                    tvPurchase_id.setText("Order #" + jConfirm.getString(ConfigApi.TAG_PURCHASE_ID));
+                                    tvSeller.setText("Warung " + jConfirm.getString(ConfigApi.TAG_SELLER));
 
                                     if (Integer.parseInt(confirm_id) == 1) {
                                         btnOrder.setEnabled(true);
-                                        btnOrder.setText("ORDER SEKARANG");
-                                        Toast.makeText(mContext, getString(R.string.confirm_1), Toast.LENGTH_SHORT).show();
+                                        btnOrder.setText(getString(R.string.orderNow));
+//                                        Toast.makeText(mContext, getString(R.string.confirm_1), Toast.LENGTH_SHORT).show();
                                     } else if (Integer.parseInt(confirm_id) == 2) {
                                         btnOrder.setEnabled(true);
-                                        btnOrder.setText("BATALKAN PESANAN");
+                                        btnOrder.setText(getString(R.string.cancelOrder));
                                         btnOrder.setBackgroundColor(getResources().getColor(R.color.white));
                                         btnOrder.setTextColor(getResources().getColor(R.color.red));
-                                        Toast.makeText(mContext, getString(R.string.confirm_2), Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(mContext, getString(R.string.confirm_2), Toast.LENGTH_SHORT).show();
                                     } else if (Integer.parseInt(confirm_id) == 3) {
                                         btnOrder.setEnabled(true);
-                                        btnOrder.setText("ORDER LAGI");
+                                        btnOrder.setText(getString(R.string.orderAgain));
                                         btnOrder.setBackgroundColor(getResources().getColor(R.color.white));
                                         btnOrder.setTextColor(getResources().getColor(R.color.colorAccent));
-                                        Toast.makeText(mContext, getString(R.string.confirm_3), Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(mContext, getString(R.string.confirm_3), Toast.LENGTH_SHORT).show();
                                     } else if (Integer.parseInt(confirm_id) == 4) {
-                                        btnOrder.setText(getString(R.string.confirm_4a));
+                                        btnOrder.setEnabled(true);
+                                        btnOrder.setText(getString(R.string.orderAgain));
                                         btnOrder.setBackgroundColor(getResources().getColor(R.color.white));
-                                        btnOrder.setTextColor(getResources().getColor(R.color.grey));
-                                        Toast.makeText(mContext, getString(R.string.confirm_4), Toast.LENGTH_SHORT).show();
+                                        btnOrder.setTextColor(getResources().getColor(R.color.colorAccent));
+//                                        Toast.makeText(mContext, getString(R.string.confirm_4), Toast.LENGTH_SHORT).show();
                                     } else if (Integer.parseInt(confirm_id) == 5) {
                                         btnOrder.setText(getString(R.string.confirm_5a));
                                         btnOrder.setBackgroundColor(getResources().getColor(R.color.white));
                                         btnOrder.setTextColor(getResources().getColor(R.color.grey));
-                                        Toast.makeText(mContext, getString(R.string.confirm_5), Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(mContext, getString(R.string.confirm_5), Toast.LENGTH_SHORT).show();
+                                    } else if (Integer.parseInt(confirm_id) == 6) {
+                                        btnOrder.setText(getString(R.string.confirm_6a));
+                                        btnOrder.setBackgroundColor(getResources().getColor(R.color.white));
+                                        btnOrder.setTextColor(getResources().getColor(R.color.grey));
+//                                        Toast.makeText(mContext, getString(R.string.confirm_6), Toast.LENGTH_SHORT).show();
                                     }
 
                                     if (Integer.parseInt(confirm_id) != 1) {
@@ -142,7 +158,7 @@ public class CartListActivity extends AppCompatActivity {
 
                                     JSONObject jsonTotalPrice = jsonResult.getJSONObject(ConfigApi.JSON_TOTAL_PRICE);
                                     total_price = String.valueOf(jsonTotalPrice.get(ConfigApi.TAG_TOTAL_PRICE));
-                                    tvTotalPrice.setText(total_price);
+                                    tvTotalPrice.setText("Rp"+total_price);
 
                                     JSONArray jsonItem = jsonResult.getJSONArray(ConfigApi.JSON_CART_LIST);
                                     for (int j = 0; j < jsonItem.length(); j++) {
@@ -153,14 +169,36 @@ public class CartListActivity extends AppCompatActivity {
                                         String amount = jItem.getString(ConfigApi.TAG_AMOUNT);
                                         String selling_price = jItem.getString(ConfigApi.TAG_SELLING_PRICE);
                                         String seller_id = jItem.getString(ConfigApi.TAG_SELLER_ID);
+                                        String confirm_id = jItem.getString(ConfigApi.TAG_CONFIRM_ID);
 
-                                        itemArrayList.add(new CartItemModel(item_id, name, stock, amount, selling_price, seller_id));
+                                        itemArrayList.add(new CartItemModel(item_id, name, stock, amount, selling_price, seller_id, confirm_id));
                                     }
+
+                                    if (Integer.parseInt(confirm_id) == 1) {
+                                        spinnerPos.setEnabled(true);
+                                        JSONArray jsonPos = jsonResult.getJSONArray(ConfigApi.JSON_POS);
+                                        for (int j = 0; j < jsonPos.length(); j++) {
+                                            JSONObject jPos = jsonPos.getJSONObject(j);
+                                            spinnerArray.add(jPos.getString(ConfigApi.TAG_POS_ID));
+                                        }
+
+                                    } else {
+                                        etNote.setPaintFlags(0);
+                                        etNote.setBackground(null);
+                                        JSONArray jsonPosCurrent = jsonResult.getJSONArray(ConfigApi.JSON_POS_CURRENT);
+                                        JSONObject jPosCurrent = jsonPosCurrent.getJSONObject(0);
+                                        spinnerArray.add(jPosCurrent.getString(ConfigApi.TAG_POS_ID));
+                                        spinnerPos.setEnabled(false);
+                                    }
+
+                                    ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(mContext, R.layout.spinner_pos, spinnerArray);
+                                    spinnerPos.setAdapter(spinnerArrayAdapter);
 
                                     adapter = new CartItemAdapter(itemArrayList);
                                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext);
                                     rvItem.setLayoutManager(layoutManager);
                                     rvItem.setAdapter(adapter);
+
                                 } else if (jsonResult.has(ConfigApi.JSON_ERROR)) {
                                     Toast.makeText(mContext, getString(R.string.error), Toast.LENGTH_SHORT).show();
                                 }
@@ -183,11 +221,13 @@ public class CartListActivity extends AppCompatActivity {
 
     private void orderNow() {
         note = etNote.getText().toString();
+        String submitPos = spinnerPos.getSelectedItem().toString();
 
         Intent i = new Intent(mContext, QrScanActivity.class);
         i.putExtra(ConfigApi.TAG_TOKEN, token);
         i.putExtra(ConfigApi.TAG_PURCHASE_ID, purchase_id);
         i.putExtra(ConfigApi.TAG_NOTE, note);
+        i.putExtra(ConfigApi.TAG_POS_ID, submitPos);
         i.putExtra(ConfigApi.TAG_TOTAL_PRICE, total_price);
         startActivity(i);
     }

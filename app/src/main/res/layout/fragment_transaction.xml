@@ -13,7 +13,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/sm"
+            android:layout_marginTop="@dimen/xl"
+            android:layout_marginLeft="@dimen/xl"
+            android:layout_marginRight="@dimen/xl"
+            android:paddingTop="@dimen/lg"
             android:background="@color/xlightGrey"
             android:orientation="vertical">
 

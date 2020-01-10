@@ -30,7 +30,7 @@ import retrofit2.Response;
 
 public class QrScanActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
-    String token, qr_code, purchase_id, note, total_price;
+    String token, qr_code, purchase_id, note, pos, total_price;
     Context mContext;
     BaseApiService mApiService;
 
@@ -45,6 +45,7 @@ public class QrScanActivity extends AppCompatActivity implements ZXingScannerVie
         token = getIntent().getStringExtra(ConfigApi.TAG_TOKEN);
         purchase_id = getIntent().getStringExtra(ConfigApi.TAG_PURCHASE_ID);
         note = getIntent().getStringExtra(ConfigApi.TAG_NOTE);
+        pos = getIntent().getStringExtra(ConfigApi.TAG_POS_ID);
         total_price = getIntent().getStringExtra(ConfigApi.TAG_TOTAL_PRICE);
 
         mContext = QrScanActivity.this;
@@ -98,7 +99,7 @@ public class QrScanActivity extends AppCompatActivity implements ZXingScannerVie
     }
 
     private void storePaymentRequest() {
-        mApiService.storePaymentRequest("Bearer " + token, qr_code, purchase_id, note, total_price)
+        mApiService.storePaymentRequest("Bearer " + token, qr_code, purchase_id, note, pos, total_price)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

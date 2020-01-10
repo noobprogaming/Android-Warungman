@@ -3,8 +3,8 @@ package com.noobprogaming.warungman.Service;
 public class ConfigApi {
 
 
-    public static final String URL_API = "http://192.168.43.254:8000/api/";
-    public static final String URL_DATA_FILE = "http://192.168.43.254:8000/data_file/";
+    public static final String URL_API = "http://192.168.100.34:8000/api/";
+    public static final String URL_DATA_FILE = "http://192.168.100.34:8000/data_file/";
 
     public static final String JSON_SUCCESS = "success";
     public static final String JSON_DATA = "data";
@@ -18,6 +18,8 @@ public class ConfigApi {
     public static final String JSON_ITEM = "item";
     public static final String JSON_RATING = "rating";
     public static final String JSON_CONFIRM = "confirm";
+    public static final String JSON_POS = "pos";
+    public static final String JSON_POS_CURRENT = "pos_current";
     public static final String JSON_RATING_LAPAK = "ratingLapak";
 //    public static final String JSON_ = "";
 
@@ -46,6 +48,7 @@ public class ConfigApi {
     public static final String TAG_ITEM_ID = "item_id";
     public static final String TAG_SELLER_ID = "seller_id";
     public static final String TAG_PURCHASE_ID = "purchase_id";
+    public static final String TAG_POS_ID = "pos_id";
 //    public static final String TAG_ = "";
 
     public static final String KEY_LOGIN_DATA = "loginData";

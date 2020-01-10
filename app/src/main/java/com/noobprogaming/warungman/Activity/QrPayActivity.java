@@ -69,7 +69,7 @@ public class QrPayActivity extends AppCompatActivity implements ZXingScannerView
     @Override
     public void handleResult(Result result) {
         qr_code = result.getText();
-        storePaymentRequest();
+//        storePaymentRequest();
 //        MainActivity.tvAmount.setText(rawResult.getText());
 //        onBackPressed();
     }
@@ -97,39 +97,39 @@ public class QrPayActivity extends AppCompatActivity implements ZXingScannerView
                 .check();
     }
 
-    private void storePaymentRequest() {
-        mApiService.storePaymentRequest("Bearer " + token, qr_code, purchase_id, note, total_price)
-                .enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if (response.isSuccessful()) {
-                            try {
-                                JSONObject jsonResult = new JSONObject(response.body().string());
-                                JSONObject jsonSuccess = jsonResult.getJSONObject(ConfigApi.JSON_STATUS);
-                                if (!jsonSuccess.isNull(ConfigApi.TAG_SUCCESS)) {
-                                    String status = (String) jsonSuccess.get(ConfigApi.TAG_SUCCESS);
-                                    Toast.makeText(mContext, status, Toast.LENGTH_LONG).show();
-                                    finish();
-                                } else {
-                                    String status = (String) jsonSuccess.get(ConfigApi.TAG_ERROR);
-                                    Toast.makeText(mContext, status, Toast.LENGTH_SHORT).show();
-                                    mScannerView.resumeCameraPreview(QrPayActivity.this);
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                                Toast.makeText(mContext, e.toString(), Toast.LENGTH_SHORT).show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                                Toast.makeText(mContext, e.toString(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Toast.makeText(mContext, getString(R.string.badConnection), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
+//    private void storePaymentRequest() {
+//        mApiService.storePaymentRequest("Bearer " + token, qr_code, purchase_id, note, pos, total_price)
+//                .enqueue(new Callback<ResponseBody>() {
+//                    @Override
+//                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                        if (response.isSuccessful()) {
+//                            try {
+//                                JSONObject jsonResult = new JSONObject(response.body().string());
+//                                JSONObject jsonSuccess = jsonResult.getJSONObject(ConfigApi.JSON_STATUS);
+//                                if (!jsonSuccess.isNull(ConfigApi.TAG_SUCCESS)) {
+//                                    String status = (String) jsonSuccess.get(ConfigApi.TAG_SUCCESS);
+//                                    Toast.makeText(mContext, status, Toast.LENGTH_LONG).show();
+//                                    finish();
+//                                } else {
+//                                    String status = (String) jsonSuccess.get(ConfigApi.TAG_ERROR);
+//                                    Toast.makeText(mContext, status, Toast.LENGTH_SHORT).show();
+//                                    mScannerView.resumeCameraPreview(QrPayActivity.this);
+//                                }
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                                Toast.makeText(mContext, e.toString(), Toast.LENGTH_SHORT).show();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                                Toast.makeText(mContext, e.toString(), Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                        Toast.makeText(mContext, getString(R.string.badConnection), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//    }
 
 }

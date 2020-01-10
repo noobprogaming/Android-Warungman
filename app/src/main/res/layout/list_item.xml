@@ -60,7 +60,7 @@
                         style="@style/Widget.AppCompat.Button.Borderless.Colored"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/btnAmount"
-                        android:text="Add +"
+                        android:text="Tambah +"
                         android:textSize="@dimen/font_sm" />
 
                 </LinearLayout>

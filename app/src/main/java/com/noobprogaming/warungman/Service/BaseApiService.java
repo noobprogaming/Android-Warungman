@@ -34,6 +34,7 @@ public interface BaseApiService {
                                            @Field("qr_code") String qr_code,
                                            @Field("purchase_id") String purchase_id,
                                            @Field("note") String note,
+                                           @Field("pos") String pos,
                                            @Field("total_price") String total_price);
 
     @FormUrlEncoded
@@ -75,8 +76,7 @@ public interface BaseApiService {
     @GET("transactionList")
     Call<ResponseBody> transactionListRequest (@Header("Authorization") String token);
 
-    @GET("itemlist")
+    @GET("itemList")
     Call<ResponseBody> itemListRequest (@Header("Authorization") String token);
-
 
 }

@@ -38,7 +38,7 @@
                         android:id="@+id/tvName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="{{ Hi }}"
+                        android:text="Hai"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -54,7 +54,7 @@
                         android:id="@+id/tvBalance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="{{ Rp0 }}"
+                        android:text="Saldo"
                         android:textStyle="bold" />
 
                 </LinearLayout>

@@ -122,13 +122,19 @@ public class TransactionFragment extends Fragment {
                                             confirm_id = getString(R.string.confirm_4);
                                         } else if (Integer.parseInt(confirm_id) == 5) {
                                             confirm_id = getString(R.string.confirm_5);
+                                        } else if (Integer.parseInt(confirm_id) == 6) {
+                                            confirm_id = getString(R.string.confirm_6);
+                                        }
+
+                                        if(total_price == "null") {
+                                            total_price = "0";
                                         }
 
                                         HashMap<String, String> transaction = new HashMap<>();
                                         transaction.put(ConfigApi.TAG_PURCHASE_ID, purchase_id);
                                         transaction.put(ConfigApi.TAG_SELLER, seller);
                                         transaction.put(ConfigApi.TAG_CONFIRM_ID, confirm_id);
-                                        transaction.put(ConfigApi.TAG_TOTAL_PRICE, total_price);
+                                        transaction.put(ConfigApi.TAG_TOTAL_PRICE, "Rp" + total_price);
                                         listTransaction.add(transaction);
                                     }
                                 } else if (jsonResult.has(ConfigApi.JSON_ERROR)) {

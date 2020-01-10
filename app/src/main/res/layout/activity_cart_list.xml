@@ -13,20 +13,63 @@
         android:orientation="vertical"
         android:weightSum="2">
 
-        <ScrollView
+        <RelativeLayout
+            android:isScrollContainer="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/xlightGrey"
-            android:fillViewport="true">
+            android:orientation="vertical"
+            android:weightSum="2">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvItem"
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:elevation="@dimen/xxs"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/md"
+                android:paddingTop="@dimen/md"
+                android:paddingRight="@dimen/md">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:id="@+id/tvSeller"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Warung" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/tvPurchase_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="No. Order" />
+
+            </LinearLayout>
+
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/md" />
+                android:layout_weight="1"
+                android:backgroundTint="@color/xlightGrey"
+                android:fillViewport="true"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="230dp"
+                android:scrollbars="vertical">
 
-        </ScrollView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/md"/>
+
+            </ScrollView>
+
+        </RelativeLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
@@ -38,14 +81,15 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:background="@color/white"
+                app:cardCornerRadius="@dimen/sm" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/sm"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="@dimen/sm">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
@@ -59,14 +103,69 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <Spinner
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"></Spinner>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/xxs"
+                        android:paddingRight="@dimen/xxs"
+                        android:weightSum="2">
 
-                    <TextView
-                        android:id="@+id/tvTotalPrice"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="Nomor Meja"
+                            android:textSize="@dimen/font_md" />
+
+                        <Spinner
+                            android:id="@+id/spinnerPos"
+                            android:layout_width="@dimen/xs"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="-12dp"
+                            android:layout_weight="1"
+                            android:gravity="right"></Spinner>
+
+                    </LinearLayout>
+
+                    <View
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/xxs"
+                        android:layout_marginBottom="@dimen/md"
+                        android:background="@color/lightGrey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/md"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/xxs"
+                        android:paddingRight="@dimen/xxs"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="Total Harga"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_md"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvTotalPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_md"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
 
                     <Button
                         android:id="@+id/btnOrder"

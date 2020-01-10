@@ -61,13 +61,13 @@ public class ItemDetailActivity extends AppCompatActivity {
 
         ivItem = (ImageView) findViewById(R.id.ivItem);
         tvName = (TextView) findViewById(R.id.tvName);
-        tvStock = (TextView) findViewById(R.id.tvStock);
+//        tvStock = (TextView) findViewById(R.id.tvStock);
         tvDescription = (TextView) findViewById(R.id.tvDescription);
         tvSellingPrice = (TextView) findViewById(R.id.tvSellingPrice);
         tvAmount = (TextView) findViewById(R.id.tvAmount);
         btnDecrease = (Button) findViewById(R.id.btnDecrease);
         btnIncrease = (Button) findViewById(R.id.btnIncrease);
-        btnTambah = (Button) findViewById(R.id.btnTambah);
+//        btnTambah = (Button) findViewById(R.id.btnTambah);
 
         btnDecrease.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,13 +100,13 @@ public class ItemDetailActivity extends AppCompatActivity {
             }
         });
 
-        btnTambah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                amount = tvAmount.getText().toString();
-                storeCartRequest();
-            }
-        });
+//        btnTambah.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                amount = tvAmount.getText().toString();
+//                storeCartRequest();
+//            }
+//        });
 
         loading();
         itemDetailRequest();
@@ -138,9 +138,9 @@ public class ItemDetailActivity extends AppCompatActivity {
                                     stock = jData.getString(ConfigApi.TAG_STOCK);
 
                                     tvName.setText(jData.getString(ConfigApi.TAG_NAME));
-                                    tvStock.setText(stock);
+//                                    tvStock.setText("Stok : " + stock);
                                     tvDescription.setText(jData.getString(ConfigApi.TAG_DESCRIPTION));
-                                    tvSellingPrice.setText(jData.getString(ConfigApi.TAG_SELLING_PRICE));
+                                    tvSellingPrice.setText("Rp" + jData.getString(ConfigApi.TAG_SELLING_PRICE));
 
                                     JSONArray jsonRating = jsonResult.getJSONArray(ConfigApi.JSON_RATING);
                                     for (int j = 0; j < jsonRating.length(); j++) {

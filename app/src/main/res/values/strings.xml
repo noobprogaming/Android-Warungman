@@ -7,12 +7,16 @@
     <string name="error">Terjadi kesalahan</string>
     <string name="loading">Memuat data</string>
     <string name="logoutNotification">Anda telah logout</string>
-    <string name="confirm_1">Belum Bayar</string>
-    <string name="confirm_2">Proses</string>
-    <string name="confirm_3">Selesai</string>
-    <string name="confirm_4">Dibatalkan oleh pembeli</string>
-    <string name="confirm_4a">Anda telah membatalkan pesanan ini</string>
-    <string name="confirm_5">Dibatalkan oleh resto</string>
-    <string name="confirm_5a">Pesanan ini dibatalkan oleh resto</string>
+    <string name="confirm_1">Belum bayar</string>
+    <string name="confirm_2">Sedang diproses</string>
+    <string name="confirm_3">Telah diantar</string>
+    <string name="confirm_4">Selesai</string>
+    <string name="confirm_5">Dibatalkan oleh pembeli</string>
+    <string name="confirm_5a">Anda telah membatalkan pesanan ini</string>
+    <string name="confirm_6">Dibatalkan oleh resto</string>
+    <string name="confirm_6a">Pesanan ini dibatalkan oleh resto</string>
+    <string name="orderNow">Order Sekarang</string>
+    <string name="orderAgain">Order Lagi</string>
+    <string name="cancelOrder">Batalkan Orderan</string>
     <string name="qrRequest">Minta teman kamu untuk scan QR code di bawah ini</string>
 </resources>

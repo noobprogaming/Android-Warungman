@@ -8,14 +8,16 @@ public class CartItemModel {
     private String amount;
     private String selling_price;
     private String seller_id;
+    private String confirm_id;
 
-    public CartItemModel(String item_id, String name, String stock, String amount, String selling_price, String seller_id) {
+    public CartItemModel(String item_id, String name, String stock, String amount, String selling_price, String seller_id, String confirm_id) {
         this.item_id = item_id;
         this.name = name;
         this.stock = stock;
         this.amount = amount;
         this.selling_price = selling_price;
         this.seller_id = seller_id;
+        this.confirm_id = confirm_id;
     }
 
     public String getItem_id() {
@@ -65,4 +67,14 @@ public class CartItemModel {
     public void setSeller_id(String seller_id) {
         this.seller_id = seller_id;
     }
+
+    public String getConfirm_id() {
+        return confirm_id;
+    }
+
+    public void setConfirm_id(String seller_id) {
+        this.confirm_id = confirm_id;
+    }
+
+
 }

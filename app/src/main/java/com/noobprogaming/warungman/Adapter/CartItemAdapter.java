@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,6 +21,7 @@ import com.noobprogaming.warungman.Service.BaseApiService;
 import com.noobprogaming.warungman.Service.ConfigApi;
 
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +29,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -48,13 +51,14 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
     }
 
     @Override
-    public void onBindViewHolder(ItemViewHolder holder, final int position) {
+    public void onBindViewHolder(final ItemViewHolder holder, final int position) {
         final String seller_id = dataList.get(position).getSeller_id();
         final String name = dataList.get(position).getName();
         final String item_id = dataList.get(position).getItem_id();
         final String amount = dataList.get(position).getAmount();
         final String stock = dataList.get(position).getStock();
         final String selling_price = dataList.get(position).getSelling_price();
+        final String confirm_id = dataList.get(position).getConfirm_id();
         final ItemViewHolder finalholder = holder;
 
         String gambarUrl = ConfigApi.URL_DATA_FILE + item_id;
@@ -63,15 +67,32 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
         holder.tvName.setText(name);
         holder.tvSellingPrice.setText("Rp" + selling_price);
 
+        finalholder.llAmount.setVisibility(View.VISIBLE);
+        finalholder.llAdd.setVisibility(View.INVISIBLE);
+
         int mAmount = Integer.parseInt(amount);
 
-        if (mAmount >= 1) {
-            holder.llAdd.setVisibility(View.INVISIBLE);
-            holder.llAmount.setVisibility(View.VISIBLE);
-            finalholder.tvAmount.setText(Integer.toString(mAmount));
-        } else {
-            holder.llAmount.setVisibility(View.INVISIBLE);
+        if (Integer.parseInt(confirm_id) == 1) {
             holder.llAdd.setVisibility(View.VISIBLE);
+            holder.btnAdd.setVisibility(View.VISIBLE);
+            holder.btnIncrease.setVisibility(View.VISIBLE);
+            holder.btnDecrease.setVisibility(View.VISIBLE);
+
+            if (mAmount >= 1) {
+                holder.llAdd.setVisibility(View.INVISIBLE);
+                holder.llAmount.setVisibility(View.VISIBLE);
+                finalholder.tvAmount.setText(Integer.toString(mAmount));
+            } else {
+                holder.llAmount.setVisibility(View.INVISIBLE);
+                holder.llAdd.setVisibility(View.VISIBLE);
+            }
+
+        } else {
+            finalholder.tvAmount.setText(Integer.toString(mAmount));
+            holder.llAdd.setVisibility(View.INVISIBLE);
+            holder.btnAdd.setVisibility(View.INVISIBLE);
+            holder.btnIncrease.setVisibility(View.INVISIBLE);
+            holder.btnDecrease.setVisibility(View.INVISIBLE);
         }
 
         holder.cvItem.setOnClickListener(new View.OnClickListener() {
@@ -125,9 +146,6 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
 
                 String amountText = finalholder.tvAmount.getText().toString();
                 int mAmount = Integer.parseInt(amountText);
-
-                finalholder.llAmount.setVisibility(View.VISIBLE);
-                finalholder.llAdd.setVisibility(View.INVISIBLE);
 
                 mAmount++;
                 if (mAmount <= Integer.parseInt(stock)) {

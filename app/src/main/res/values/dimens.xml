@@ -7,7 +7,7 @@
     <dimen name="xl">24dp</dimen>
     <dimen name="xxl">28dp</dimen>
     <dimen name="xxxl">34dp</dimen>
-    <dimen name="btnAmount">34dp</dimen>
+    <dimen name="btnAmount">36dp</dimen>
     <dimen name="img_pp">48dp</dimen>
     <dimen name="font_xxs">4sp</dimen>
     <dimen name="font_xs">8sp</dimen>
